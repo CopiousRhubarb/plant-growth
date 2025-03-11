@@ -7,24 +7,23 @@
 public class PlantGrowth {
     public static void main(String[] args) {
 
+        // DECLARATION SECTION
+        int week;
+        int sunlight; // full, partial, and shaded will be calculated separately
+        int water; // top and bottom watered will be calculated in addition to sunlight
 
-//DECLARATION SECTION
-    int week; 
-    int sunlight; //full, partial, and shaded will be calculated separately
-    int water; //top and bottom watered will be calculated in addition to sunlight
+        // INITIALIZATION SECTION
 
-//INITIALIZATION SECTION
+        // INPUT + CALCULATION SECTION
 
-//INPUT + CALCULATION SECTION
+        // method 1: calculate growth under different sunlight conditions - Ryan
 
-//method 1: calculate growth under different sunlight conditions - Ryan
+        // method 2: calculate growth under different watering conditions - Caitlin
 
-//method 2: calculate growth under different watering conditions - Caitlin
+        // mathod 3: drawing seed - Ryan
 
-//mathod 3: drawing seed - Ryan
+        // method 4: introducing the user to the project - Caitlin
 
-//method 4: introducing the user to the project - Caitlin 
-
-//OUTPUT SECTION
+        // OUTPUT SECTION
     }
 }
