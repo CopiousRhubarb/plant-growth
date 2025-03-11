@@ -17,13 +17,13 @@ public class PlantGrowth {
 
 //INPUT + CALCULATION SECTION
 
-//method 1: calculate growth under different sunlight conditions
+//method 1: calculate growth under different sunlight conditions - Ryan
 
-//method 2: calculate growth under different watering conditions 
+//method 2: calculate growth under different watering conditions - Caitlin
 
-//mathod 3: drawing seed
+//mathod 3: drawing seed - Ryan
 
-//method 4: introducing the user to the project
+//method 4: introducing the user to the project - Caitlin 
 
 //OUTPUT SECTION
     }
