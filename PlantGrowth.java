@@ -1,6 +1,7 @@
 // Purpose
-// Lately I have been getting into growing plants from seed. This is a process that is very daunting, but rewarding. I want to see how different conditions would effect the growth of my plants, such as how much sunlight and water the plant recieves. 
-// So this program will be used to simulate seedling growth under different conditions. 
+// Lately I have been getting into growing plants from seed. This is a process that is very daunting, but rewarding.
+// I want to see how different conditions would affect the growth of my plants, such as how much sunlight and water the
+// plant receives. So this program will be used to simulate seedling growth under different conditions.
 
 // Collaborators: Ryan Moore and Caitlin Lim
 
