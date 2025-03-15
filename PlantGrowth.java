@@ -28,6 +28,9 @@ public class PlantGrowth
         String boxDownRight;
         String boxUpRight;
         String boxUpLeft;
+        String title = "Plant Growing Experiment";
+        String titleCard = "𖡼.𖤣𖥧𖡼.𖤣𖥧";
+        String introContent = String.format("The purpose of this program is to simulate the best growing conditions when growing plants from seeds. %nThe conditions we are testing are how shaded the plant is (full sun, partial sun, no sun) and if we add fertilizer. %nThe program will show you how much we expect the plant to grow under each condition. ");
 
         // INITIALIZATION SECTION
         week = 0;
@@ -66,6 +69,9 @@ public class PlantGrowth
 
 
         // method 4: introducing the user to the project - Caitlin
+
+        System.out.println();
+        plantIntro(titleCard, title, introContent);
 
         // OUTPUT SECTION
         week = 0;
@@ -161,6 +167,7 @@ public class PlantGrowth
         return growthRate + fertilizer;
     }
 
+    //method 3: Draw Plant (Ryan) 
     public static void drawPlant(int week, double growthRate)
     {
         String boxHoriz = "─";
@@ -178,5 +185,12 @@ public class PlantGrowth
         System.out.print(bulb);
         System.out.print(stem.repeat(totalGrowth));
         System.out.println(boxUpRight + boxHoriz.repeat(5) + boxUpLeft);
+    }
+
+    //method 4: Introduce the program
+    public static void plantIntro(String titleCard, String title, String introContent)
+    {
+        System.out.printf("%s%3s%3s%n", titleCard,title, titleCard);
+        System.out.printf("%s%n", introContent);
     }
 }
