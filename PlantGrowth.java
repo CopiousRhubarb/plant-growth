@@ -5,6 +5,8 @@
 
 // Collaborators: Ryan Moore and Caitlin Lim
 
+import org.w3c.dom.ls.LSOutput;
+
 public class PlantGrowth
 {
     public static void main(String[] args)
@@ -12,52 +14,138 @@ public class PlantGrowth
 
         // DECLARATION SECTION
         int week; //weeks from 0 to 8
-        double sunFull; // full, partial, and shaded will be calculated separately
-        double sunPartial;
-        double sunShaded;
-        int waterTop; // top and bottom watered will be calculated in addition to sunlight
-        int waterBottom;
-        double growthRateFullTop; // rate of growth increase after each week for full sun and top water
-        double growthRatePartialTop; // partial sun and top water
-        double growthRateShadedTop; // etc.
-        double growthRateFullBottom;
-        double growthRatePartialBottom;
-        double growthRateShadedBottom;
-
+        double sunFull, sunPartial, sunShaded; // full, partial, and shaded will be calculated separately
+        int fertilizerNotPresent, fertilizerPresent; // presence of fertilizer in soil
+        double growthRateFullFert; // rate of growth increase after each week for full sun and top water
+        double growthRatePartialFert; // partial sun and top water
+        double growthRateShadedFert; // etc.
+        double growthRateFullNoFert;
+        double growthRatePartialNoFert;
+        double growthRateShadedNoFert;
+        String boxHoriz;
+        String boxVert;
+        String boxDownLeft;
+        String boxDownRight;
+        String boxUpRight;
+        String boxUpLeft;
 
         // INITIALIZATION SECTION
         week = 0;
         sunFull = 1.0;
         sunPartial = 0.5;
         sunShaded = 0.0;
-        waterTop = 2;
-        waterBottom = 1;
-        growthRateFullTop = 1.0;
-        growthRatePartialTop = 1.0;
-        growthRateShadedTop = 1.0;
-        growthRateFullBottom = 1.0;
-        growthRatePartialBottom = 1.0;
-        growthRateShadedBottom = 1.0;
+        fertilizerNotPresent = 0;
+        fertilizerPresent = 1;
+        growthRateFullFert = 1.0; // Initialize all growth rates to 1.0. Methods will rectify to final growth rate
+        growthRatePartialFert = 1.0;
+        growthRateShadedFert = 1.0;
+        growthRateFullNoFert = 1.0;
+        growthRatePartialNoFert = 1.0;
+        growthRateShadedNoFert = 1.0;
 
 
         // CALCULATION SECTION
 
         // method 1: calculate growth under different sunlight conditions - Ryan
-        growthRateFullTop = calculateSunConditions(growthRateFullTop, sunFull);
-        growthRatePartialTop = calculateSunConditions(growthRatePartialTop, sunPartial);
-        growthRateShadedTop = calculateSunConditions(growthRateShadedTop, sunShaded);
-        growthRateFullBottom = calculateSunConditions(growthRateFullBottom, sunFull);
-        growthRatePartialBottom = calculateSunConditions(growthRatePartialBottom, sunPartial);
-        growthRateShadedBottom = calculateSunConditions(growthRateShadedBottom, sunShaded);
+        growthRateFullFert = calculateSunConditions(growthRateFullFert, sunFull);
+        growthRatePartialFert = calculateSunConditions(growthRatePartialFert, sunPartial);
+        growthRateShadedFert = calculateSunConditions(growthRateShadedFert, sunShaded);
+        growthRateFullNoFert = calculateSunConditions(growthRateFullNoFert, sunFull);
+        growthRatePartialNoFert = calculateSunConditions(growthRatePartialNoFert, sunPartial);
+        growthRateShadedNoFert = calculateSunConditions(growthRateShadedNoFert, sunShaded);
 
-        // method 2: calculate growth under different watering conditions - Caitlin
-        calculateWaterConditions();
+        // method 2: calculate growth under different fertilizer conditions - Caitlin
+        growthRateFullFert = calculateFertilizer(growthRateFullFert, fertilizerPresent);
+        growthRatePartialFert = calculateFertilizer(growthRatePartialFert, fertilizerPresent);
+        growthRateShadedFert = calculateFertilizer(growthRateShadedFert, fertilizerPresent);
+        growthRateFullNoFert = calculateFertilizer(growthRateFullNoFert, fertilizerNotPresent);
+        growthRatePartialNoFert = calculateFertilizer(growthRatePartialNoFert, fertilizerNotPresent);
+        growthRateShadedNoFert = calculateFertilizer(growthRateShadedNoFert, fertilizerNotPresent);
 
         // mathod 3: drawing seed - Ryan
+
 
         // method 4: introducing the user to the project - Caitlin
 
         // OUTPUT SECTION
+        week = 0;
+
+        System.out.println();
+        drawPlant(week, growthRateFullFert);
+        System.out.println("^ Week " + week + ": " + "Full Sunlight + Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRatePartialFert);
+        System.out.println("^ Week " + week + ": " + "Partial Sunlight + Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRateShadedFert);
+        System.out.println("^ Week " + week + ": " + "Shaded + Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRateFullNoFert);
+        System.out.println("^ Week " + week + ": " + "Full Sunlight + No Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRatePartialNoFert);
+        System.out.println("^ Week " + week + ": " + "Partial Sunlight + No Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRateShadedNoFert);
+        System.out.println("^ Week " + week + ": " + "Shaded + No Fertilizer ^");
+
+        week = 1;
+
+        System.out.println();
+        drawPlant(week, growthRateFullFert);
+        System.out.println("^ Week " + week + ": " + "Full Sunlight + Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRatePartialFert);
+        System.out.println("^ Week " + week + ": " + "Partial Sunlight + Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRateShadedFert);
+        System.out.println("^ Week " + week + ": " + "Shaded + Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRateFullNoFert);
+        System.out.println("^ Week " + week + ": " + "Full Sunlight + No Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRatePartialNoFert);
+        System.out.println("^ Week " + week + ": " + "Partial Sunlight + No Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRateShadedNoFert);
+        System.out.println("^ Week " + week + ": " + "Shaded + No Fertilizer ^");
+
+        week = 2;
+
+        System.out.println();
+        drawPlant(week, growthRateFullFert);
+        System.out.println("^ Week " + week + ": " + "Full Sunlight + Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRatePartialFert);
+        System.out.println("^ Week " + week + ": " + "Partial Sunlight + Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRateShadedFert);
+        System.out.println("^ Week " + week + ": " + "Shaded + Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRateFullNoFert);
+        System.out.println("^ Week " + week + ": " + "Full Sunlight + No Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRatePartialNoFert);
+        System.out.println("^ Week " + week + ": " + "Partial Sunlight + No Fertilizer ^");
+
+        System.out.println();
+        drawPlant(week, growthRateShadedNoFert);
+        System.out.println("^ Week " + week + ": " + "Shaded + No Fertilizer ^");
+
     }
 
     // method 1: Calculate
@@ -68,22 +156,27 @@ public class PlantGrowth
 
     // method 2: calculate growth under different watering conditions - Caitlin
     //for each sunlight condition there are 2 watering conditions waterTop will have an double of .9 and waterBottom will have an int of 1  
-    public static void calculateWaterConditions()
+    public static double calculateFertilizer(double growthRate, double fertilizer)
     {
-        int waterTop = (sunFull);
-        int waterBottom = (sunFull + 1);
-        system.out.println("The plant grew " + waterTop + " inches when watering from above in full sunlight.");
-        system.out.println("The plant grew " + waterBottom + " inches when watering from below in full sunlight.");
+        return growthRate + fertilizer;
+    }
 
-        int waterTop = (sunPartial);
-        int waterBottom = (sunPartial + 1);
-        system.out.println("The plant grew " + waterTop + " inches when watering from above in partial sunlight.");
-        system.out.println("The plant grew " + waterBottom + " inches when watering from below in partial sunlight.");
+    public static void drawPlant(int week, double growthRate)
+    {
+        String boxHoriz = "─";
+        String boxVert = "│";
+        String boxDownRight = "┌";
+        String boxDownLeft = "┐";
+        String boxUpRight = "└";
+        String boxUpLeft = "┘";
+        int totalGrowth = (int) (growthRate * week);
 
-        int waterTop = (sunShaded);
-        int waterBottom = (sunShaded + 1);
-        system.out.println("The plant grew " + waterTop + " inches when watering from above in the shade.");
-        system.out.println("The plant grew " + waterBottom + " inches when watering from below in the shade.");
+        String bulb = String.format("%s  %s  %s%n%s %s %s %s%n", boxVert, "|", boxVert, boxVert, "\\", "/", boxVert);
+        String stem = String.format("%-3s%-3s%s%n", boxVert, "|", boxVert);
 
+        System.out.println(boxDownRight + boxHoriz.repeat(5) + boxDownLeft);
+        System.out.print(bulb);
+        System.out.print(stem.repeat(totalGrowth));
+        System.out.println(boxUpRight + boxHoriz.repeat(5) + boxUpLeft);
     }
 }
