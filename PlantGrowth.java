@@ -5,7 +5,6 @@
 
 // Collaborators: Ryan Moore and Caitlin Lim
 
-import org.w3c.dom.ls.LSOutput;
 
 public class PlantGrowth
 {
@@ -181,6 +180,7 @@ public class PlantGrowth
         String bulb = String.format("%s  %s  %s%n%s %s %s %s%n", boxVert, "|", boxVert, boxVert, "\\", "/", boxVert);
         String stem = String.format("%-3s%-3s%s%n", boxVert, "|", boxVert);
 
+        // Uses String.repeat(), introduced in Java 11. This will run in a modern Java runtime.
         System.out.println(boxDownRight + boxHoriz.repeat(5) + boxDownLeft);
         System.out.print(bulb);
         System.out.print(stem.repeat(totalGrowth));
