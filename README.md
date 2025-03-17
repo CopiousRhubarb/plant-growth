@@ -11,5 +11,6 @@ A note: We are unable to submit accurately through codeHS due to their outdated 
 References:
 - https://youtu.be/2SwLs5SlXPc?si=NUtS18xzvDs2h54s 
 - Tallamy, D. W. (2009). Bringing nature home: how you can sustain wildlife with native plants, updated and expanded. Timber Press.
-# plant-growth
 
+
+Link to CodeHS project: https://codehs.com/sandbox/id/sandbox-program-aaAPzx
